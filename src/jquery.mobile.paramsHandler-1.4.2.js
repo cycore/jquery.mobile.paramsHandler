@@ -93,8 +93,10 @@ function getUrlVars(url) {
     var queryUrl = url.slice(url.lastIndexOf('?') + 1);
     var hashes = queryUrl.split('&');
     for (var i = 0; i < hashes.length; i++) {
-        url = hashes[i].split('=');
-        vars[url[0]] = url[1];
+        var parts = hashes[i].split('=');
+        var name = decodeURIComponent(parts[0]);
+        var val = decodeURIComponent(parts[1]);
+        vars[name] = val;
     }
     return vars;
 }
